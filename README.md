@@ -18,15 +18,15 @@
 
 <!-- ![vis-main-top](images/vis-main-top.png) -->
 
-CODiff reconstruction demos on JPEG images with QF=1
+#### CODiff compression demos with bpp=0.0313
 
 [<img src="figs/comp/0803_0313.png" width="270px"/>](https://imgsli.com/MzgxMjg5) [<img src="figs/comp/0806_0313.png" width="270px"/>](https://imgsli.com/MzgxMjkw) [<img src="figs/comp/21950943ce77f421f03a52ada741d1d9_0313.png" width="270px"/>](https://imgsli.com/MzgxMjky)
 
-CODiff reconstruction demos on JPEG images with QF=5
+#### CODiff compression demos with bpp=0.0507
 
 [<img src="figs/comp/0835_0507.png" width="270px"/>](https://imgsli.com/MzgxMzE3) [<img src="figs/comp/0843_0507.png" width="270px"/>](https://imgsli.com/MzgxMzE5) [<img src="figs/comp/0824bfaef8a290439690f35b7602d682_0507.png" width="270px"/>](https://imgsli.com/MzgxMzI3)
 
-CODiff reconstruction demos on JPEG images with QF=10
+#### CODiff compression demos with bpp=0.0937
 
 [<img src="figs/comp/0808_0937.png" width="270px"/>](https://imgsli.com/MzgxMzIx) [<img src="figs/comp/0855_0937.png" width="270px"/>](https://imgsli.com/MzgxMzIz) [<img src="figs/comp/ad249bba099568403dc6b97bc37f8d74_0937.png" width="270px"/>](https://imgsli.com/MzgxMzI0)
 
@@ -68,21 +68,15 @@ CODiff reconstruction demos on JPEG images with QF=10
 </details>
 <details open>
 <summary>&ensp;Visual Comparisons (click to expand) </summary>
-<li> Visual results on LIVE-1 dataset from the main paper.
 <p align="center">
 <img src="figs/0313.png">
 </p>
-</li>
-<li> Visual results on Urban100 dataset from the main paper.
 <p align="center">
 <img src="figs/0507.png" >
 </p>
-</li>
-<li> Visual results on DIV2K-val dataset from the main paper.
 <p align="center">
 <img src="figs/1250.png" >
 </p>
-</li>
 </details>
 
 ## <a name="citation"></a>📎 Citation
