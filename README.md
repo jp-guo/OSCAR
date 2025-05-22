@@ -14,24 +14,6 @@
 
 ![](figs/oscar.png)
 
----
-
-<!-- ![vis-main-top](images/vis-main-top.png) -->
-
-#### OSCAR compression demos with bpp=0.0313
-
-[<img src="figs/comp/0803_0313.png" width="270px"/>](https://imgsli.com/MzgxMjg5) [<img src="figs/comp/0806_0313.png" width="270px"/>](https://imgsli.com/MzgxMjkw) [<img src="figs/comp/21950943ce77f421f03a52ada741d1d9_0313.png" width="270px"/>](https://imgsli.com/MzgxMjky)
-
-#### OSCAR compression demos with bpp=0.0507
-
-[<img src="figs/comp/0835_0507.png" width="270px"/>](https://imgsli.com/MzgxMzE3) [<img src="figs/comp/0843_0507.png" width="270px"/>](https://imgsli.com/MzgxMzE5) [<img src="figs/comp/0824bfaef8a290439690f35b7602d682_0507.png" width="270px"/>](https://imgsli.com/MzgxMzI3)
-
-#### OSCAR compression demos with bpp=0.0937
-
-[<img src="figs/comp/0808_0937.png" width="270px"/>](https://imgsli.com/MzgxMzIx) [<img src="figs/comp/0855_0937.png" width="270px"/>](https://imgsli.com/MzgxMzIz) [<img src="figs/comp/ad249bba099568403dc6b97bc37f8d74_0937.png" width="270px"/>](https://imgsli.com/MzgxMzI0)
-
----
-
 ## ⚒️ TODO
 
 * [ ] Release code and pretrained models
@@ -73,9 +55,6 @@
 </p>
 <p align="center">
 <img src="figs/0507.png" >
-</p>
-<p align="center">
-<img src="figs/1250.png" >
 </p>
 </details>
 
