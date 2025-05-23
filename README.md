@@ -2,7 +2,7 @@
 
 [Jinpei Guo](https://jp-guo.github.io/), Yifei Ji, [Zheng Chen](https://zhengchen1999.github.io/), [Kai Liu](https://kai-liu.cn/), [Min Liu](https://minliu01.github.io/), Wang Rao, [Wenbo Li](https://fenglinglwb.github.io/),  [Yong Guo](https://www.guoyongcs.com/), and [Yulun Zhang](http://yulunzhang.com/),  "OSCAR: One-Step Diffusion Codec Across Multiple Bit-rates", arXiv, 2025
 
-[[paper]()] [[supplementary material](https://github.com/jp-guo/OSCAR/releases/tag/v1)]
+[[paper](http://arxiv.org/abs/2505.16091)] [[supplementary material](https://github.com/jp-guo/OSCAR/releases/tag/v1)]
 
 #### 🔥🔥🔥 News
 
@@ -26,7 +26,7 @@
 - [ ] Testing
 - [ ] Training
 - [x] [Results](#Results)
-- [ ] Citation
+- [x] [Citation](#Citation)
 - [ ] Acknowledgements
 
 ## <a name="results"></a>🔎 Results
@@ -63,22 +63,21 @@
 
 If you find the code helpful in your research or work, please cite our work.
 
-[//]: # (```)
+```
 
-[//]: # (@article{guo2025compression,)
+@article{guo2025oscar,
 
-[//]: # (    title={Compression-Aware One-Step Diffusion Model for JPEG Artifact Removal},)
+    title={OSCAR: One-Step Diffusion Codec Across Multiple Bit-rates},
 
-[//]: # (    author={Guo, Jinpei and Chen, Zheng and Li, Wenbo and Guo, Yong and Zhang, Yulun},)
+    author={Jinpei Guo, Yifei Ji, Zheng Chen, Kai Liu, Min Liu, Wang Rao, Wenbo Li, Yong Guo, Yulun Zhang},
 
-[//]: # (    journal={arXiv preprint arXiv:2502.09873},)
+    journal={arXiv preprint arXiv:2505.16091},
 
-[//]: # (    year={2025})
+    year={2025}
 
-[//]: # (})
+}
 
-[//]: # (```)
-[TBD]
+```
 
 ## <a name="acknowledgements"></a>💡 Acknowledgements
 
