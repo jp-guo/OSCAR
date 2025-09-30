@@ -65,10 +65,10 @@ If you find the code helpful in your research or work, please cite our work.
 
 ```
 @article{guo2025oscar,
-    title={OSCAR: One-Step Diffusion Codec Across Multiple Bit-rates},
-    author={Jinpei Guo, Yifei Ji, Zheng Chen, Kai Liu, Min Liu, Wang Rao, Wenbo Li, Yong Guo, Yulun Zhang},
-    journal={arXiv preprint arXiv:2505.16091},
-    year={2025}
+  title={OSCAR: One-Step Diffusion Codec Across Multiple Bit-rates},
+  author={Guo, Jinpei and Ji, Yifei and Chen, Zheng and Liu, Kai and Liu, Min and Rao, Wang and Li, Wenbo and Guo, Yong and Zhang, Yulun},
+  journal={arXiv preprint arXiv:2505.16091},
+  year={2025}
 }
 ```
 
