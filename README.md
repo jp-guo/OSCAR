@@ -10,56 +10,67 @@
 
 ---
 
-> **Abstract:** Pretrained latent diffusion models have shown strong potential for lossy image compression, owing to their powerful generative priors. Most existing diffusion-based methods reconstruct images by iteratively denoising from random noise, guided by compressed latent representations. While these approaches have achieved high reconstruction quality, their multi-step sampling process incurs substantial computational overhead. Moreover, they typically require training separate models for different compression bit-rates, leading to significant training and storage costs. To address these challenges, we propose a one-step diffusion codec across multiple bit-rates. termed OSCAR. Specifically, our method views compressed latents as noisy variants of the original latents, where the level of distortion depends on the bit-rate. This perspective allows them to be modeled as intermediate states along a diffusion trajectory. By establishing a mapping from the compression bit-rate to a pseudo diffusion timestep, we condition a single generative model to support reconstructions at multiple bit-rates. Meanwhile, we argue that the compressed latents retain rich structural information, thereby making one-step denoising feasible. Thus, OSCAR replaces iterative sampling with a single denoising pass, significantly improving inference efficiency. Extensive experiments demonstrate that OSCAR achieves superior performance in both quantitative and visual quality metrics.
+## <a name="setup"></a> Setup
+### Environment
+```aiignore
+conda env create -f environment.yml
+conda activate oscar
+```
+
+### Models
+Please download the following models and place them in the `model_zoo` directory.
+1. [SD-2.1](https://huggingface.co/stabilityai/stable-diffusion-2-1)
+2. [OSCAR](https://huggingface.co/jinpeig/OSCAR)
+
+> **Abstract:** Pretrained latent diffusion models have shown strong potential for lossy image compression, owing to their powerful generative priors. Most existing diffusion-based methods reconstruct images by iteratively denoising from random noise, guided by compressed latent representations. While these approaches have achieved high reconstruction quality, their multi-step sampling process incurs substantial computational overhead. Moreover, they typically require training separate models for different compression bit-rates, leading to significant training and storage costs. To address these challenges, we propose a \textbf{o}ne-\textbf{s}tep diffusion \textbf{c}odec \textbf{a}cross multiple bit-\textbf{r}ates. termed \textbf{\mymodel}. Specifically, our method views compressed latents as noisy variants of the original latents, where the level of distortion depends on the bit-rate. This perspective allows them to be modeled as intermediate states along a diffusion trajectory. By establishing a mapping from the compression bit-rate to a pseudo diffusion timestep, we condition a single generative model to support reconstructions at multiple bit-rates. Meanwhile, we argue that the compressed latents retain rich structural information, thereby making one-step denoising feasible. Thus, \mymodel replaces iterative sampling with a single denoising pass, significantly improving inference efficiency. Extensive experiments demonstrate that \mymodel achieves superior performance in both quantitative and visual quality metrics.
+
+---
+
+## <a name="training"></a> Training
+Training consists of two stages. In the first stage, we train hyper-encoders. In the second stage, we fine-tune both hyper-encoders and OSCAR's UNet with LoRA.
+### First Stage
+Update the training [configuration file](https://github.com/jp-guo/OSCAR/tree/main/options/train_hyper_enc.json) and [training script](https://github.com/jp-guo/OSCAR/tree/main/options/train_hyper_enc.sh) with appropriate values. You should select one `bpp` value from the predefined list in [rate_config.py](https://github.com/jp-guo/OSCAR/tree/main/utils/rate_config.py). Once the configuration is updated, run the training command as follows:
+```aiignore
+bash train_hyper_enc.sh
+```
+
+### Second Stage
+Update the [configuration file](https://github.com/jp-guo/OSCAR/tree/main/options/train_diff.json) and [training script](https://github.com/jp-guo/OSCAR/tree/main/options/train_diff.sh) with appropriate values, specify the hyper-encoder checkpoint from the first stage in [train.sh](https://github.com/jp-guo/OSCAR/tree/main/train.sh), 
+and launch training:
+```aiignore
+bash train.sh
+```
+
+---
+
+## <a name="Testing"></a> Testing
+
+Specify the paths to the OSCAR checkpoints, as well as the dataset directory in [test.sh](https://github.com/jp-guo/OSCAR/tree/main/test.sh), then run:
+```aiignore
+bash test.sh
+```
+
+---
 
 <img src="figs/comp.png" width="100%"/>
 <img src="figs/oscar.png" width="100%"/>
 
-## ⚒️ TODO
-
-* [ ] Release code and pretrained models
-
-## 🔗 Contents
-
-- [ ] Datasets
-- [ ] Models
-- [ ] Testing
-- [ ] Training
-- [x] [Results](#Results)
-- [x] [Citation](#Citation)
-- [ ] Acknowledgements
-
-## <a name="results"></a>🔎 Results
+## <a name="results"></a> Results
 
 <details>
 <summary>&ensp;Quantitative Comparisons (click to expand) </summary>
-<li> Quantitative results on Kodak dataset. 
 <p align="center">
-<img src="figs/Kodak.png" >
+<img src="figs/quantitative.png" >
 </p>
-</li>
-<li> Quantitative results on DIV2K-val dataset. 
-<p align="center">
-<img src="figs/DIV2K-val.png" >
-</p>
-</li>
-<li> Quantitative results on CLIC2020 dataset. 
-<p align="center">
-<img src="figs/CLIC2020.png" >
-</p>
-</li>
 </details>
 <details open>
 <summary>&ensp;Visual Comparisons (click to expand) </summary>
 <p align="center">
-<img src="figs/0313.png">
-</p>
-<p align="center">
-<img src="figs/0507.png" >
+<img src="figs/qualitative.png">
 </p>
 </details>
 
-## <a name="citation"></a>📎 Citation
+## <a name="citation"></a> Citation
 
 If you find the code helpful in your research or work, please cite our work.
 
@@ -72,8 +83,8 @@ If you find the code helpful in your research or work, please cite our work.
 }
 ```
 
-## <a name="acknowledgements"></a>💡 Acknowledgements
+## <a name="acknowledgements"></a> Acknowledgements
 
-[TBD]
+This code is built on [PerCo](https://github.com/Nikolai10/PerCo) and [CODiff](https://github.com/jp-guo/CODiff).
 
 <!-- ![Visitor Count](https://profile-counter.glitch.me/jkwang28/count.svg) -->

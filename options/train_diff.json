@@ -1,0 +1,13 @@
+{
+  "n_channels": 3,
+  "datasets": {
+    "data_root": ["dataset/train/DIV2K/HR",
+      "dataset/train/Flickr2K",
+      "dataset/train/LSDIR/HR"]
+    , "patch_size": 256
+    , "dataloader_shuffle": true
+    , "dataloader_num_workers": 64
+    , "dataloader_batch_size": 8
+
+  }
+}

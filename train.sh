@@ -1,0 +1,16 @@
+accelerate launch --main_process_port main_train.py \
+    --pretrained_model_name_or_path="model_zoo/stable-diffusion-2-1" \
+    --enc_paths "" \
+    --val_path="dataset/test/Kodak" \
+    --learning_rate=5e-5 \
+    --gradient_accumulation_steps=1 \
+    --enable_xformers_memory_efficient_attention --checkpointing_steps 7500 \
+    --max_train_steps 150000 \
+    --mixed_precision='no' \
+    --seed 123 \
+    --lora_rank=16 \
+    --aux_loss "dists" \
+    --tracker_project_name "oscar" \
+    --hyper_dim 320 \
+    --edge_loss \
+    --gan_loss

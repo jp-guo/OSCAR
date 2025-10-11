@@ -1,0 +1,11 @@
+{
+  "n_channels": 3,
+  "datasets": {
+    "data_root": ["dataset/CAR/DIV2K/HR", "dataset/CAR/Flickr2K", "dataset/CAR/LSDIR/HR"]
+    , "patch_size": 256
+    , "dataloader_shuffle": true
+    , "dataloader_num_workers": 64
+    , "dataloader_batch_size": 64
+
+  }
+}
