@@ -87,7 +87,6 @@ if __name__ == "__main__":
     f = open(os.path.join(args.output_dir, 'results.csv'), 'w')
     print('bpp,PSNR,MS-SSIM,DISTS,LPIPS,MUSIQ,CLIPIQA,FID', file=f)
     for level in range(len(model.timesteps)):
-    # for level in [0, 1]:
         bpp = model.bpps[level]
         os.makedirs(os.path.join(args.output_dir, str(bpp)), exist_ok=True)
         test_results = OrderedDict()
