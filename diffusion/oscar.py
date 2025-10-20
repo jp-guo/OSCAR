@@ -87,7 +87,7 @@ class OSCAR(torch.nn.Module):
         self.hyper_encoders.to("cuda")
         self.embeddings = nn.Parameter(torch.zeros(77, 1024, device="cuda"), requires_grad=True)
         self.embeddings.data.normal_(mean=0.0, std=0.02)
-        self.timesteps = torch.tensor([810, 780, 310, 280, 210, 190, 170, 150], device="cuda").long()
+        self.timesteps = torch.tensor([500, 400, 310, 280, 210, 190, 170, 150], device="cuda").long()
 
     def set_train(self):
         self.unet.train()
@@ -120,7 +120,6 @@ class OSCAR(torch.nn.Module):
         latents = self.vae.encode(img).latent_dist.sample() * self.vae.config.scaling_factor  # b, 4, 16, 16
         latents = latents.detach()
         bz = latents.shape[0]
-
         z_hat = self.hyper_encoders[idx](latents)
         b, c, h, w = z_hat.shape
         z = torch.nn.functional.normalize(latents.flatten(2), dim=-1)

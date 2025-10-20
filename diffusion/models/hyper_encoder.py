@@ -114,32 +114,38 @@ class HyperEncoder(ModelMixin, ConfigMixin):
     ):
         super().__init__()
 
-        vq_spatialdim = cfg_ss
         self.backbone = nn.Sequential(
-            conv1x1(in_channels, N),
+            conv1x1(in_channels, N) if cfg_ss >= 16 else conv(in_channels, N),
             ResidualBottleneckBlock(N),
             ResidualBottleneckBlock(N),
             ResidualBottleneckBlock(N),
-            AttentionLayer(N),
-            conv1x1(N, N) if vq_spatialdim > 32 else conv(N, N),
+            conv1x1(N, N) if cfg_ss >= 32 else conv(N, N),
             ResidualBottleneckBlock(N),
             ResidualBottleneckBlock(N),
             ResidualBottleneckBlock(N),
-            AttentionLayer(N),
+            AttentionBlock(N),
+            conv1x1(N, N) if cfg_ss == 64 else conv(N, N),
+            ResidualBottleneckBlock(N),
+            ResidualBottleneckBlock(N),
+            ResidualBottleneckBlock(N),
             conv1x1(N, M),
-            AttentionLayer(M),
+            AttentionBlock(M)
         )
 
         self.proj = nn.Sequential(
+            conv1x1(M, M) if cfg_ss >= 16 else deconv(M, M),
             ResidualBottleneckBlock(M),
             ResidualBottleneckBlock(M),
             ResidualBottleneckBlock(M),
-            conv1x1(M, M) if cfg_ss > 32 else deconv(M, M),
+            conv1x1(M, M) if cfg_ss >= 32 else deconv(M, M),
             ResidualBottleneckBlock(M),
             ResidualBottleneckBlock(M),
             ResidualBottleneckBlock(M),
-            conv1x1(M, M),
-            conv1x1(M, 4),  # newly added
+            conv1x1(M, M) if cfg_ss == 64 else deconv(M, M),
+            ResidualBottleneckBlock(M),
+            ResidualBottleneckBlock(M),
+            ResidualBottleneckBlock(M),
+            conv1x1(M, 4)
         )
 
         # VQ
@@ -163,7 +169,5 @@ class HyperEncoder(ModelMixin, ConfigMixin):
         z_hat = z_hat.view(b, h, w, c)
         # (B,C,H,W)
         z_hat = z_hat.permute(0, 3, 1, 2)
-
         z_hat = self.proj(z_hat)
-
         return z_hat

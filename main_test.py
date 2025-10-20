@@ -101,8 +101,8 @@ if __name__ == "__main__":
             img_name, ext = os.path.splitext(os.path.basename(img))
 
             img_H = Image.open(img).convert('RGB')
-            new_width = img_H.width - img_H.width % 16
-            new_height = img_H.height - img_H.height % 16
+            new_width = img_H.width - img_H.width % 128
+            new_height = img_H.height - img_H.height % 128
             img_H = img_H.resize((new_width, new_height), Image.LANCZOS)
 
             # get caption
